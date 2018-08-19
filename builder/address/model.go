@@ -20,10 +20,6 @@ func NewBuilder() AddressBuilder {
 	return builder{}
 }
 
-func (b builder) Builder() AddressBuilder {
-	return builder{}
-}
-
 func (b builder) Street(street string) AddressBuilder {
 	b.address.street = street
 	return b

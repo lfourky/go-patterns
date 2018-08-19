@@ -3,9 +3,14 @@ package person
 import "github.com/lfourky/go-patterns/builder/address"
 
 type Person struct {
-	name    string
-	age     int
-	address address.Address
+	name      string
+	age       int
+	address   address.Address
+	reallyOld bool
+}
+
+func (p Person) Name() string {
+	return p.name
 }
 
 type PersonBuilder interface {
@@ -31,6 +36,10 @@ func (b builder) Name(name string) PersonBuilder {
 
 func (b builder) Age(age int) PersonBuilder {
 	b.person.age = age
+	if b.person.age > 90 {
+		// Just to demonstrate some other logic that could be applied here (not that it's not apparent)
+		b.person.reallyOld = true
+	}
 	return b
 }
 
